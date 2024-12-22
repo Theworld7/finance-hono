@@ -1,16 +1,12 @@
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
+import {serve} from '@hono/node-server'
 
-const app = new Hono()
+// @ts-ignore
+import app from './routes.ts'
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
-
-const port = 3000
+const port = 4000
 console.log(`Server is running on http://localhost:${port}`)
 
 serve({
-  fetch: app.fetch,
-  port
+    fetch: app.fetch,
+    port,
 })
